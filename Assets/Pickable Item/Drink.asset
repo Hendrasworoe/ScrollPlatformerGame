@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9ac2a986612d94bb265e08eb92e1c6, type: 3}
+  m_Name: Drink
+  m_EditorClassIdentifier: 
+  id: 1
+  displayName: Drink
+  icon: {fileID: 95314264, guid: 5ae05d5d06e5f6942bba029826756d4f, type: 3}

@@ -9,6 +9,8 @@ public class InventorySystem : MonoBehaviour
 
     public List<Item> inventory { get; private set; }
 
+    [SerializeField] private int _inventoryCapacity = 20;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -27,7 +29,6 @@ public class InventorySystem : MonoBehaviour
 
     public void Add(Item addedItem)
     {
-        // add clausa when inventory is full
         inventory.Add(addedItem);
 
         onInventoryChangedEvent();
@@ -38,5 +39,10 @@ public class InventorySystem : MonoBehaviour
         inventory.Remove(removedItem);
 
         onInventoryChangedEvent();
+    }
+
+    public bool CanPickUpItem()
+    {
+        return inventory.Count < _inventoryCapacity;
     }
 }

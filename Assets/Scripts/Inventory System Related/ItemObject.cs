@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviour, iInteractable
 {
     public Item referenceItem;
 
-    private void OnTriggerStay2D(Collider2D other)
+    public void IntractIt()
     {
-        if (other.CompareTag("Player") && Input.GetButton("Submit"))
-        {
-            Debug.Log("Item Picked");
-            PickupItem();
-        }
+        PickupItem();
     }
 
     private void PickupItem()
     {
-        InventorySystem.Instance.Add(referenceItem);
-        Destroy(gameObject);
+        if (InventorySystem.Instance.CanPickUpItem())
+        {
+            InventorySystem.Instance.Add(referenceItem);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DialogueManager.Instance.dialogueSystem.Begin("FullItemNotif");
+        }
     }
 }

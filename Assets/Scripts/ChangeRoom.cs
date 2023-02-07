@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChangeRoom : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class ChangeRoom : MonoBehaviour
 
     [Header("Property on below no need to fill if it's a Dependent Type")]
     [SerializeField] private ChangeRoom _itsPairPoint;
+    public GameObject canMoveIndicator;
     public TransitionBehaviour transitionBackground;
 
     private bool _transitionInProgress;
@@ -24,10 +23,9 @@ public class ChangeRoom : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            // The line below actually changed to activate can move Room notif
-            Debug.Log("Can Move to another room");
+            canMoveIndicator.SetActive(true);
 
             if (Input.GetButton("Submit") && !_transitionInProgress)
             {
@@ -36,6 +34,14 @@ public class ChangeRoom : MonoBehaviour
                 // other.transform.position = _itsPairPoint.transform.position;
                 StartCoroutine(MoveRoom(other));
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canMoveIndicator.SetActive(false);
         }
     }
 
@@ -59,6 +65,7 @@ public class ChangeRoom : MonoBehaviour
         if (_itsPointType == SpawnPointType.Dependent)
         {
             _itsPairPoint = thePair;
+            canMoveIndicator = thePair.canMoveIndicator;
             transitionBackground = thePair.transitionBackground;
         }
     }
