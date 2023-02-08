@@ -16922,7 +16922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985357240}
   - component: {fileID: 985357241}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Enter Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17739,7 +17739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248901136}
   - component: {fileID: 1248901137}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Tanda seru
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28003,7 +28003,7 @@ GameObject:
   - component: {fileID: 1485978078}
   - component: {fileID: 1485978077}
   - component: {fileID: 1485978082}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -28409,7 +28409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1586937040}
   - component: {fileID: 1586937041}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Enter Next Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}

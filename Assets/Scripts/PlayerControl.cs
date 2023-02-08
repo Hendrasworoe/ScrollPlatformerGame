@@ -28,7 +28,6 @@ public class PlayerControl : MonoBehaviour
     {
         Move();
         OpenInventory();
-        OverlapingInteractable();
 
         if (_freezeInteract > 0)
         {
@@ -36,25 +35,27 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    // private void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.TryGetComponent(out iInteractable interactable))
-    //     {
-    //         _exclamationBubbleText.SetActive(true);
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out iInteractable interactable))
+        {
+            _exclamationBubbleText.SetActive(true);
 
-    //         if (Input.GetButton("Submit") && _freezeInteract <= 0)
-    //         {
-    //             interactable.IntractIt();
+            if (Input.GetButton("Submit") && _freezeInteract <= 0)
+            {
+                interactable.IntractIt();
 
-    //             _freezeInteract = 0.1f;
-    //         }
-    //     }
-    // }
+                _freezeInteract = 0.1f;
 
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     _exclamationBubbleText.SetActive(false);
-    // }
+                _exclamationBubbleText.SetActive(false);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        _exclamationBubbleText.SetActive(false);
+    }
 
     private void Move()
     {
@@ -75,27 +76,6 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.I))
         {
             _inventoryUIController.ShowCanvas(true);
-        }
-    }
-
-    private void OverlapingInteractable()
-    {
-        Vector2 its_position = new Vector2(transform.position.x, transform.position.y);
-        Collider2D hitBox = Physics2D.OverlapBox(its_position, _itsCollider.size, 0f);
-        if (hitBox && hitBox.TryGetComponent(out iInteractable interactable))
-        {
-            _exclamationBubbleText.SetActive(true);
-
-            if (Input.GetButton("Submit") && _freezeInteract <= 0)
-            {
-                interactable.IntractIt();
-
-                _freezeInteract = 0.1f;
-            }
-        }
-        else
-        {
-            _exclamationBubbleText.SetActive(false);
         }
     }
 }
